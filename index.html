@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22 Matcha — A little earthy, a little sweet</title>
+  <meta name="description" content="Matcha, ube, and black sesame pop-ups in Cebu and Bohol. Next stop: IT Park Road, November 20–22." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10256b;
+      --ink-soft: #8d8d8d;
+      --paper: #ececec;
+      --white: #f4f4f4;
+      --blue: #2f62f0;
+      --hero: #16306e;
+      --font-display: "Bebas Neue", Impact, sans-serif;
+      --font-body: "DM Sans", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(10, 22, 58, 0.12), rgba(10, 22, 58, 0.2)),
+        var(--hero);
+      overflow: hidden;
+      padding: 1.25rem 1.25rem 1.35rem;
+    }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .brand-lockup,
+    .hero-title,
+    .badge,
+    .hero-foot { position: relative; z-index: 1; }
+
+    .brand-lockup {
+      position: absolute;
+      top: 1.15rem;
+      left: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #fff;
+    }
+    .brand-lockup img {
+      width: 84px;
+      height: 84px;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(5.6rem, 18vw, 13rem);
+      line-height: 0.78;
+      letter-spacing: 0.01em;
+      text-align: center;
+      margin: 16vh 0 auto;
+      text-transform: uppercase;
+    }
+
+    .badge {
+      position: absolute;
+      left: 8%;
+      top: 42%;
+      width: min(210px, 46vw);
+      aspect-ratio: 2.35 / 1;
+      display: grid;
+      place-items: center;
+      transform: rotate(-12deg);
+      text-decoration: none;
+      color: var(--blue);
+    }
+    .badge svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .badge span {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .hero-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.6vw, 2.15rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .hero-foot a { text-decoration: none; }
+    .hero-foot a:hover { opacity: 0.8; }
+    .place {
+      display: block;
+      height: 1.05em;
+      overflow: hidden;
+      line-height: 1.05;
+    }
+    .place-track { display: block; }
+    .place-track > * {
+      display: block;
+      height: 1.05em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .ig svg { width: 1.15em; height: 1.15em; flex: none; }
+
+    .sheet { padding: 4.5rem 1.25rem 3rem; }
+    .sheet-inner { max-width: 980px; margin: 0 auto; }
+
+    .display {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(3.4rem, 9vw, 7.5rem);
+      line-height: 0.86;
+      letter-spacing: 0.01em;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 1.35rem;
+      margin-bottom: 2.25rem;
+    }
+    .tabs button {
+      appearance: none;
+      background: none;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      padding: 0.2rem 0 0.15rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2vw, 1.7rem);
+      letter-spacing: 0.04em;
+      color: #bcbcbc;
+      cursor: pointer;
+    }
+    .tabs button[aria-selected="true"] {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+    .tabs button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+    .panel { display: none; }
+    .panel.is-on { display: block; }
+    .panel-note {
+      text-align: center;
+      color: var(--ink);
+      font-size: 0.95rem;
+      margin: -0.5rem auto 1.75rem;
+      max-width: 36rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .menu-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      color: var(--blue);
+      margin-bottom: 0.65rem;
+    }
+    .drink {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      letter-spacing: 0.03em;
+      padding: 0.18rem 0;
+    }
+    .drink .price { font-variant-numeric: tabular-nums; }
+
+    .cup {
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.55rem 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      letter-spacing: 0.03em;
+    }
+    .shot {
+      width: 76px;
+      height: 92px;
+      border-radius: 8px;
+      background: #d7d7dc;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: #6e6e78;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .shot-matcha { background: #d5ddd2; color: #5d6b58; }
+    .shot-ube { background: #e3d6ee; color: #6d5a7c; }
+    .shot-sesame { background: #ddd4c8; color: #6e6458; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; }
+    .shot:has(img) span { display: none; }
+
+    .note {
+      max-width: 38rem;
+      margin: 1.75rem auto 0;
+      text-align: center;
+      color: #4d4d4d;
+      font-size: 0.98rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .split p { color: #333; font-size: 1.02rem; }
+
+    footer {
+      padding: 2.5rem 1.25rem 2rem;
+      text-align: center;
+    }
+    footer .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      letter-spacing: 0.04em;
+    }
+    footer .links a { text-decoration: none; }
+    footer .fine {
+      margin-top: 1.25rem;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      body { animation: pageFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+      .brand-lockup { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .hero-title { animation: riseIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+      .badge { animation: badgeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+      .hero-foot { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both; }
+      .place-track { animation: placeSwap 5.6s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+      .panel.is-on { animation: riseIn 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    }
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes badgeIn {
+      from { opacity: 0; transform: rotate(-18deg) translateY(10px); }
+      to { opacity: 1; transform: rotate(-12deg); }
+    }
+    @keyframes placeSwap {
+      0%, 36% { transform: translateY(0); }
+      46%, 82% { transform: translateY(-1.05em); }
+      92%, 100% { transform: translateY(-2.1em); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 720px) {
+      .hero-title {
+        font-size: 22vw;
+        margin: 16vh 0 0.4rem;
+      }
+      .badge {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 168px;
+        margin: 0 0 1.25rem;
+        align-self: flex-start;
+      }
+      .hero-foot { flex-direction: column; align-items: flex-start; gap: 0.35rem; margin-top: auto; }
+      .menu-grid, .split { grid-template-columns: 1fr; gap: 1.75rem; }
+      .brand-lockup img { width: 64px; height: 64px; }
+      .shot { width: 64px; height: 78px; }
+      .cup { grid-template-columns: 64px 1fr auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .brand-lockup, .hero-title, .badge, .hero-foot, .panel.is-on, .place-track { animation: none; }
+      .place { height: auto; overflow: visible; }
+      .place-track > :last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <!-- Swap the blue field for a cover: <img class="hero-photo" src="images/hero.jpg" alt="22 Matcha drink"> -->
+    <a class="brand-lockup" href="#top">
+      <img src="images/logo.jpg" alt="22 Matcha logo" />
+    </a>
+    <h1 class="hero-title" id="top">22<br>Matcha</h1>
+    <a class="badge" href="#popups" aria-label="Next pop-up, November 20 to 22">
+      <svg viewBox="0 0 220 96" aria-hidden="true">
+        <ellipse cx="110" cy="48" rx="102" ry="38" fill="none" stroke="#2f62f0" stroke-width="3.5" />
+      </svg>
+      <span>NOV 20-22</span>
+    </a>
+    <div class="hero-foot">
+      <span class="place">
+        <span class="place-track">
+          <a href="https://www.google.com/maps/search/?api=1&query=Abad+Street+Cebu+IT+Park+Lahug" target="_blank" rel="noopener">IT Park Road, Cebu</a>
+          <span>Bohol</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Abad+Street+Cebu+IT+Park+Lahug" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">IT Park Road, Cebu</a>
+        </span>
+      </span>
+      <a class="ig" href="https://www.instagram.com/twentytwo.matcha/" target="_blank" rel="noopener">
+        @twentytwo.matcha
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="sheet" id="menu">
+      <div class="sheet-inner">
+        <h2 class="display">Here for matcha</h2>
+        <div class="tabs" role="tablist" aria-label="Menu">
+          <button type="button" role="tab" id="tab-matcha" aria-controls="panel-matcha" aria-selected="true">Matcha</button>
+          <button type="button" role="tab" id="tab-ube" aria-controls="panel-ube" aria-selected="false">Ube</button>
+          <button type="button" role="tab" id="tab-sesame" aria-controls="panel-sesame" aria-selected="false">Black sesame</button>
+        </div>
+
+        <div class="panel is-on" id="panel-matcha" role="tabpanel" aria-labelledby="tab-matcha">
+          <p class="panel-note">Marukyu Koyamaen. Standard or 22 Signature. Flavor lines and prices to follow.</p>
+          <div class="menu-grid">
+            <div class="menu-col">
+              <div class="cup">
+                <div class="shot shot-matcha"><span>Photo</span><!-- <img src="images/isuzu.jpg" alt="Isuzu"> --></div>
+                <span>Isuzu</span><span class="price">—</span>
+              </div>
+              <div class="cup">
+                <div class="shot shot-matcha"><span>Photo</span><!-- <img src="images/wako.jpg" alt="Wako"> --></div>
+                <span>Wako</span><span class="price">—</span>
+              </div>
+            </div>
+            <div class="menu-col">
+              <div class="cup">
+                <div class="shot shot-matcha"><span>Photo</span><!-- <img src="images/wakatake.jpg" alt="Wakatake"> --></div>
+                <span>Wakatake</span><span class="price">—</span>
+              </div>
+              <div class="cup">
+                <div class="shot shot-matcha"><span>Photo</span><!-- <img src="images/aoarashi.jpg" alt="Aoarashi"> --></div>
+                <span>Aoarashi</span><span class="price">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-ube" role="tabpanel" aria-labelledby="tab-ube" hidden>
+          <p class="panel-note">The ube series. Coco Ube is the one they asked for. The rest of the names are still open.</p>
+          <div class="menu-grid">
+            <div class="menu-col">
+              <h3>Ube</h3>
+              <div class="cup">
+                <div class="shot shot-ube"><span>Photo</span><!-- <img src="images/coco-ube.jpg" alt="Coco Ube"> --></div>
+                <span>Coco Ube</span><span class="price">—</span>
+              </div>
+              <div class="cup">
+                <div class="shot shot-ube"><span>Photo</span><!-- <img src="images/ube-2.jpg" alt="Ube drink"> --></div>
+                <span>More from the series</span><span class="price">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-sesame" role="tabpanel" aria-labelledby="tab-sesame" hidden>
+          <p class="panel-note">Black sesame is on the posts. Drink names and prices to follow.</p>
+          <div class="menu-grid">
+            <div class="menu-col">
+              <h3>Black sesame</h3>
+              <div class="cup">
+                <div class="shot shot-sesame"><span>Photo</span><!-- <img src="images/sesame.jpg" alt="Black sesame drink"> --></div>
+                <span>Black sesame drinks</span><span class="price">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet" id="popups" style="padding-top: 1rem;">
+      <div class="sheet-inner">
+        <h2 class="display">Next booth</h2>
+        <div class="menu-grid">
+          <div class="menu-col">
+            <h3>Coming up</h3>
+            <div class="drink"><span>Nov 20-22</span><span>IT Park Road</span></div>
+            <div class="drink"><span>Dec 5-6</span><span>Atua Midtown</span></div>
+            <div class="drink"><span>Dec 11-13</span><span>IT Park Road</span></div>
+          </div>
+          <div class="menu-col">
+            <h3>Also seen at</h3>
+            <div class="drink"><span>Ayala Bloc</span></div>
+            <div class="drink"><span>Astra</span></div>
+            <div class="drink"><span>SM J Mall</span></div>
+          </div>
+        </div>
+        <p class="note">With Papi and Friends on Abad Street, Lahug, for the IT Park dates. Hours for these days are not posted yet. The Nov 6-8 market on the same street ran 3-10 PM. Cebu and Bohol. Orders go through Instagram.</p>
+      </div>
+    </section>
+
+    <section class="sheet" id="about" style="padding-top: 0.5rem;">
+      <div class="sheet-inner">
+        <h2 class="display">A little earthy</h2>
+        <div class="split">
+          <p>22 Matcha pops up in Cebu and Bohol. Matcha, ube, and black sesame. Earthy first, sweet second.</p>
+          <p>The matcha is Marukyu Koyamaen: Isuzu, Wako, Wakatake, and Aoarashi, made Standard or 22 Signature. Phone and email go here once you send them.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="https://www.google.com/maps/search/?api=1&query=Abad+Street+Cebu+IT+Park+Lahug" target="_blank" rel="noopener">IT Park Road, Cebu</a>
+      <a href="https://www.instagram.com/twentytwo.matcha/" target="_blank" rel="noopener">@twentytwo.matcha</a>
+    </div>
+    <p class="fine">&copy; <span id="year"></span> 22 Matcha. Cebu and Bohol.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function () {
+      var targets = document.querySelectorAll(".display, .cup, .note, .split p");
+      targets.forEach(function (el) { el.classList.add("reveal"); });
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+        targets.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+      targets.forEach(function (el, i) {
+        el.style.transitionDelay = (i % 4) * 60 + "ms";
+        io.observe(el);
+      });
+    })();
+
+    var tabs = document.querySelectorAll('[role="tab"]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (other) {
+          var on = other === tab;
+          other.setAttribute("aria-selected", on ? "true" : "false");
+          var panel = document.getElementById(other.getAttribute("aria-controls"));
+          panel.classList.toggle("is-on", on);
+          panel.hidden = !on;
+          if (on) {
+            panel.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
